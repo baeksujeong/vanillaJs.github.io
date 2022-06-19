@@ -3,9 +3,21 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script defer src="./javascripts/index.js"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h2 id="clock">00:00:00</h2>
+    <form id="name">
+      <input placeholder="write ID">
+    </form>
+    <div class="userName"></div>
+    <form id="todo">
+      <input placeholder="write todolist">
+    </form>
+    <div id="todo-list"></div>
+    <div id="weather">
+      <span></span>
+      <span></span>
+    </div>
   </body>
 </html>
