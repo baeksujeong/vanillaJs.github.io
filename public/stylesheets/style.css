@@ -6,3 +6,38 @@ body {
 a {
   color: #00B7FF;
 }
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 88vh;
+}
+.clock{
+  font-size: 45px;
+  color: navy;
+}
+input{
+  width: 200px;
+  height: 33px;
+  font-size: 18px;
+  margin-top: 15px;
+}
+#todo-list{
+  width: 200px;
+  margin-top: 14px;
+  font-size: 15px;
+  list-style-type: square;
+}
+#todo-list li{
+  margin-top: 10px;
+}
+#todo-list button{
+  margin-left: 20px;
+}
+#weather{
+  font-size: 20px;
+  color: navy;
+  font-weight: 600;
+  margin-top: 20px;
+}

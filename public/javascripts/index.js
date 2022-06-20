@@ -1,4 +1,14 @@
-const clock = document.querySelector("h2#clock")
+const clock = document.querySelector("h2#clock");
+const API_KEY = "fe63c14e98b8f3d6a9042440c2530112";
+const idForm = document.querySelector("#name")
+const idinput = idForm.querySelector("input")
+const userName = document.querySelector(".userName")
+const toDoForm = document.querySelector("#todo")
+const toDoInput = toDoForm.querySelector("input")
+const toDOList = document.getElementById("todo-list")
+
+const TODOS_KEY = "todos"
+let toDos = [];
 
 function getClock(){
     const date = new Date();
@@ -18,8 +28,6 @@ getClock()
 changeBg()
 setInterval(getClock, 1000)
 
-const API_KEY = "fe63c14e98b8f3d6a9042440c2530112"
-
 function onGeoOk(position){
     const lat = position.coords.latitude;
     const lng = position.coords.longitude
@@ -38,29 +46,18 @@ function onGeoError(){
 
 navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError)
 
-const idForm = document.querySelector("#name")
-const idinput = idForm.querySelector("input")
-const userName = document.querySelector("userName")
-
 function savedID(event){
     event.preventDefault();
     const newID = idinput.value;
-    console.log(newID);
     idinput.value = "";
     const h1 = document.createElement("h1")
-    userName.innerText = `hello , ${newID}`;
+    h1.innerText = `hello ${newID}`;
+    userName.appendChild(h1);
     localStorage.setItem("id", JSON.stringify(newID))
+    idForm.style.display = "none"
 }
 
 idForm.addEventListener("submit", savedID);
-
-const toDoForm = document.querySelector("#todo")
-const toDoInput = toDoForm.querySelector("input")
-const toDOList = document.getElementById("todo-list")
-
-const TODOS_KEY = "todos"
-
-let toDos = [];
 
 function savedTODOs(){
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos))
@@ -73,7 +70,6 @@ function deleteToDo(event){
     savedTODOs();
     
 }
-
 function paintToDo(newTodo){
     const li = document.createElement("li")
     li.id = newTodo.id;
@@ -103,9 +99,7 @@ function handleToDOSumbit(event){
 
 toDoForm.addEventListener("submit", handleToDOSumbit);
 
-
 const saveToDos = localStorage.getItem(TODOS_KEY);
-
 if(saveToDos !== null){
     let parsedToDos = JSON.parse(saveToDos)
     toDos = parsedToDos;
